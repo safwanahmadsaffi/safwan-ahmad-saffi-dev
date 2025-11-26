@@ -98,11 +98,12 @@ const BentoGrid = () => {
             <motion.article
               key={project.id}
               variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               className={cn(
                 "group relative rounded-2xl p-8 bg-card border border-border overflow-hidden",
                 "hover:border-primary/50 transition-all duration-300",
-                "hover:shadow-[0_0_30px_hsl(190_95%_55%/0.15)]",
-                "flex flex-col h-full"
+                "hover:shadow-[0_0_40px_hsl(190_95%_55%/0.2)]",
+                "flex flex-col h-full cursor-pointer"
               )}
             >
               {/* Gradient overlay on hover */}

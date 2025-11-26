@@ -115,16 +115,16 @@ const Skills = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8"
         >
-          <div className="text-center p-6 rounded-2xl bg-primary/5 border border-primary/20">
-            <div className="text-4xl font-bold text-primary mb-2">10+</div>
+          <div className="text-center p-6 rounded-2xl bg-primary/5 border border-primary/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300 hover:scale-105 cursor-default">
+            <div className="text-5xl font-bold text-primary mb-2 animate-pulse">30+</div>
             <div className="text-muted-foreground font-mono text-sm">International Hackathons</div>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-secondary/5 border border-secondary/20">
-            <div className="text-4xl font-bold text-secondary mb-2">3x</div>
+          <div className="text-center p-6 rounded-2xl bg-secondary/5 border border-secondary/20 hover:bg-secondary/10 hover:border-secondary/40 transition-all duration-300 hover:scale-105 cursor-default">
+            <div className="text-5xl font-bold text-secondary mb-2">3x</div>
             <div className="text-muted-foreground font-mono text-sm">National Finalist</div>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-accent/5 border border-accent/20">
-            <div className="text-4xl font-bold text-accent mb-2">150+</div>
+          <div className="text-center p-6 rounded-2xl bg-accent/5 border border-accent/20 hover:bg-accent/10 hover:border-accent/40 transition-all duration-300 hover:scale-105 cursor-default">
+            <div className="text-5xl font-bold text-accent mb-2">150+</div>
             <div className="text-muted-foreground font-mono text-sm">Projects Evaluated</div>
           </div>
         </motion.div>

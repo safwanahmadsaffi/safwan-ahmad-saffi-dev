@@ -15,8 +15,9 @@ const Hero = () => {
       </div>
 
       {/* Glowing orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-float" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-float animate-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-accent/15 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Status badge */}
@@ -40,7 +41,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight"
         >
-          <span className="text-foreground">Safwan Ahmad</span>
+          <span className="text-foreground hover:text-gradient transition-all duration-500 cursor-default">Safwan Ahmad</span>
         </motion.h1>
         
         <motion.p
