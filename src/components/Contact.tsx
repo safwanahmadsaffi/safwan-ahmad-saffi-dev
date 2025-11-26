@@ -6,8 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 
 const Contact = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/50">
+      <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,14 +24,14 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 lg:sticky lg:top-24"
           >
             <div>
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
@@ -83,8 +83,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="lg:pl-8"
           >
-            <form className="space-y-6">
+            <div className="p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border shadow-xl">
+              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+              <form className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-mono text-muted-foreground mb-2">
                   Name
@@ -142,6 +145,7 @@ const Contact = () => {
                 <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </form>
+            </div>
           </motion.div>
         </div>
       </div>
