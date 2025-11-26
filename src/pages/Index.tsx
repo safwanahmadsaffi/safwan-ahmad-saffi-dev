@@ -1,22 +1,30 @@
+import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import BentoGrid from "@/components/BentoGrid";
 import Skills from "@/components/Skills";
+import Achievements3D from "@/components/Achievements3D";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <section id="projects">
-        <BentoGrid />
-      </section>
-      <Skills />
-      <section id="contact">
+    <>
+      <Navigation />
+      <main className="min-h-screen ml-20">
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="projects">
+          <BentoGrid />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <Achievements3D />
         <Contact />
-      </section>
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 };
 
