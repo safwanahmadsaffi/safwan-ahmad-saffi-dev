@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Code2, Rocket, Sparkles, Heart } from "lucide-react";
+import profileImage from "@/assets/profile.jpg";
 
 const About = () => {
   const traits = [
@@ -63,16 +64,18 @@ const About = () => {
             className="relative group"
           >
             <div className="aspect-square rounded-3xl glass-strong overflow-hidden relative">
-              {/* Placeholder for profile image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center">
-                <div className="text-8xl font-bold text-gradient">SA</div>
-              </div>
+              {/* Profile image */}
+              <img 
+                src={profileImage} 
+                alt="Safwan Ahmad" 
+                className="w-full h-full object-cover"
+              />
               
               {/* Animated border */}
               <div className="absolute inset-0 rounded-3xl border-2 border-primary/0 group-hover:border-primary/50 transition-all duration-300" />
               
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-all duration-300" />
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
             </div>
           </motion.div>
 

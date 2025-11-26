@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AnimatedLogo from "./AnimatedLogo";
 
 const TopNavigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,13 +36,9 @@ const TopNavigation = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <motion.a
-          href="#hero"
-          className="text-2xl font-bold text-gradient"
-          whileHover={{ scale: 1.05 }}
-        >
-          SA
-        </motion.a>
+        <a href="#hero">
+          <AnimatedLogo />
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
