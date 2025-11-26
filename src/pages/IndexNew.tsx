@@ -11,6 +11,7 @@ import About from "@/components/About";
 import Achievements3D from "@/components/Achievements3D";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +39,10 @@ const IndexNew = () => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* 3D Background */}
       <Scene3D />
       
