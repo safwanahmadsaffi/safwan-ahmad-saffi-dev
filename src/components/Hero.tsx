@@ -66,16 +66,20 @@ const Hero = () => {
           <Button 
             size="lg" 
             className="group bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(190_95%_55%/0.5)] transition-all"
+            asChild
           >
-            View Projects
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <a href="#projects">
+              View Projects
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
           <Button 
             size="lg" 
             variant="outline"
             className="border-primary/50 hover:bg-primary/10 hover:border-primary"
+            asChild
           >
-            Contact Me
+            <a href="#contact">Contact Me</a>
           </Button>
         </motion.div>
 

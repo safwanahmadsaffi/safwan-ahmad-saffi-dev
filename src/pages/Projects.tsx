@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ExternalLink, Github, Award, TrendingUp } from "lucide-react";
+import { ExternalLink, Github, Award, TrendingUp, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -66,35 +66,53 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const BentoGrid = () => {
+const Projects = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+        {/* Back button */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className="text-muted-foreground hover:text-primary"
+          >
+            <Link to="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </motion.div>
+
+        {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="text-gradient">Featured Projects</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Building AI systems that solve real-world problems at scale
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">
+            <span className="text-gradient">All Projects</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            A collection of AI-powered solutions, ML systems, and full-stack applications built with modern technologies
           </p>
         </motion.div>
 
-        {/* Bento grid layout */}
+        {/* Projects grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.article
               key={project.id}
               variants={itemVariants}
@@ -113,11 +131,9 @@ const BentoGrid = () => {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <Link to={`/projects/${project.id}`}>
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">
-                        {project.title}
-                      </h3>
-                    </Link>
+                    <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h2>
                     {project.impact && (
                       <div className="flex items-center gap-2 text-sm text-primary mb-2">
                         <TrendingUp className="h-4 w-4" />
@@ -126,7 +142,7 @@ const BentoGrid = () => {
                     )}
                   </div>
                   {project.featured && (
-                    <Award className="h-5 w-5 text-accent" />
+                    <Award className="h-6 w-6 text-accent flex-shrink-0" />
                   )}
                 </div>
 
@@ -199,30 +215,9 @@ const BentoGrid = () => {
             </motion.article>
           ))}
         </motion.div>
-
-        {/* View all projects link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <Button
-            variant="ghost"
-            size="lg"
-            className="group text-primary hover:text-primary hover:bg-primary/10"
-            asChild
-          >
-            <Link to="/projects">
-              View All Projects
-              <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </Link>
-          </Button>
-        </motion.div>
       </div>
-    </section>
+    </main>
   );
 };
 
-export default BentoGrid;
+export default Projects;
