@@ -3,6 +3,7 @@ import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import ChatBot from "@/components/ChatBot";
 
 const Contact = () => {
   return (
@@ -149,6 +150,9 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
+      
+      {/* AI Chatbot */}
+      <ChatBot />
     </section>
   );
 };
