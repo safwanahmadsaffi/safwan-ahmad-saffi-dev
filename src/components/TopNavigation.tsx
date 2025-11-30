@@ -17,7 +17,7 @@ const TopNavigation = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#hero" },
+    { name: "Home", href: "/" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
