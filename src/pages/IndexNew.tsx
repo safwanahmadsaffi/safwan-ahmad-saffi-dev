@@ -55,6 +55,10 @@ const IndexNew = () => {
       {/* Scrollable Content - slides over fixed hero */}
       <div className="relative z-20" style={{ marginTop: '100vh' }}>
         <div className="bg-background">
+          <section id="about" className="scroll-section">
+            <About />
+          </section>
+          
           <section id="projects" className="scroll-section">
             <BentoGrid />
           </section>
@@ -65,10 +69,6 @@ const IndexNew = () => {
           
           <section id="experience" className="scroll-section">
             <Experience />
-          </section>
-          
-          <section id="about" className="scroll-section">
-            <About />
           </section>
           
           <section className="scroll-section">
