@@ -8,7 +8,7 @@ import BentoGrid from "@/components/BentoGrid";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import About from "@/components/About";
-import Achievements3D from "@/components/Achievements3D";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -17,20 +17,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const IndexNew = () => {
   useEffect(() => {
-    // Smooth scroll animations for sections sliding over fixed hero
     const sections = gsap.utils.toArray<HTMLElement>(".scroll-section");
     
     sections.forEach((section) => {
       gsap.fromTo(
         section,
-        { opacity: 0, y: 100 },
+        { opacity: 0, y: 60 },
         {
           opacity: 1,
           y: 0,
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",
-            end: "top 20%",
+            start: "top 85%",
+            end: "top 40%",
             scrub: 1,
           },
         }
@@ -40,19 +39,11 @@ const IndexNew = () => {
 
   return (
     <div className="relative overflow-x-hidden">
-      {/* Custom Cursor */}
       <CustomCursor />
-      
-      {/* 3D Background */}
       <Scene3D />
-      
-      {/* Fixed Hero Section */}
       <Hero />
-      
-      {/* Top Navigation */}
       <TopNavigation />
       
-      {/* Scrollable Content - slides over fixed hero */}
       <div className="relative z-20" style={{ marginTop: '100vh' }}>
         <div className="bg-background">
           <section id="about" className="scroll-section">
@@ -72,7 +63,7 @@ const IndexNew = () => {
           </section>
           
           <section className="scroll-section">
-            <Achievements3D />
+            <Testimonials />
           </section>
           
           <section id="contact" className="scroll-section">

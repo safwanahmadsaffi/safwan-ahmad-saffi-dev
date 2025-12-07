@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Github, Linkedin, MessageSquare, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,20 +7,27 @@ import ChatBot from "@/components/ChatBot";
 
 const Contact = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/50">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-32 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(220_100%_57%_/_0.08)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(186_100%_50%_/_0.05)_0%,_transparent_60%)]" />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.8 }}
+          className="mb-20 text-center"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+            Get in Touch
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-gradient">Let's Build Together</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Open for freelance projects, collaborations, and full-time opportunities
           </p>
         </motion.div>
@@ -28,17 +35,16 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="space-y-8 lg:sticky lg:top-24"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-              <p className="text-muted-foreground mb-8">
-                I'm always interested in hearing about new projects and opportunities. 
-                Whether you have a question or just want to say hi, I'll do my best to get back to you!
+              <h3 className="text-2xl font-bold mb-4">Ready to collaborate?</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I'm always excited to discuss new projects, innovative ideas, or opportunities to bring your vision to life with AI and modern tech.
               </p>
             </div>
 
@@ -46,106 +52,135 @@ const Contact = () => {
             <div className="space-y-4">
               <a
                 href="mailto:safwanahmadsaffi836@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors group"
+                className="flex items-center gap-4 p-5 rounded-xl glass-card hover:border-primary/30 transition-all duration-300 group"
               >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <Mail className="h-5 w-5" />
+                <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-secondary group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground font-mono">Email</div>
-                  <div className="font-medium">safwanahmadsaffi836@gmail.com</div>
+                  <div className="text-sm text-muted-foreground">Email</div>
+                  <div className="font-medium group-hover:text-primary transition-colors">safwanahmadsaffi836@gmail.com</div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-card border border-border">
-                <div className="p-3 rounded-lg bg-secondary/10 text-secondary">
-                  <MapPin className="h-5 w-5" />
+              <div className="flex items-center gap-4 p-5 rounded-xl glass-card">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-secondary to-primary">
+                  <MapPin className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground font-mono">Location</div>
+                  <div className="text-sm text-muted-foreground">Location</div>
                   <div className="font-medium">Faisalabad, Pakistan</div>
                 </div>
               </div>
             </div>
 
-            {/* Social proof */}
+            {/* Social links */}
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/safwanahmadsaffi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-xl glass-card hover:border-primary/30 transition-all duration-300 group"
+              >
+                <Github className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/safwan-ahmad-saffi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-xl glass-card hover:border-secondary/30 transition-all duration-300 group"
+              >
+                <Linkedin className="h-6 w-6 text-muted-foreground group-hover:text-secondary transition-colors" />
+              </a>
+            </div>
+
+            {/* Status card */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
-              <div className="text-sm font-mono text-muted-foreground mb-2">Current Status</div>
-              <div className="text-lg font-bold mb-1">Available for Work</div>
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles className="h-5 w-5 text-secondary" />
+                <span className="text-sm font-medium text-secondary">Current Status</span>
+              </div>
+              <div className="text-xl font-bold mb-2">Open to Internships & Collabs</div>
               <div className="text-sm text-muted-foreground">
-                Open to exciting opportunities in AI/ML and full-stack development
+                Actively seeking opportunities in AI/ML, GenAI, and full-stack development roles
               </div>
             </div>
           </motion.div>
 
           {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:pl-8"
+            transition={{ duration: 0.8 }}
           >
-            <div className="p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border shadow-xl">
-              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+            <div className="glass-card rounded-3xl p-8 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-2.5 rounded-lg bg-primary/10">
+                  <MessageSquare className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Send a Message</h3>
+              </div>
+              
               <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-mono text-muted-foreground mb-2">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="John Doe"
-                  className="bg-card border-border focus:border-primary"
-                />
-              </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="John Doe"
+                      className="bg-muted/30 border-border/50 focus:border-primary h-12 rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      className="bg-muted/30 border-border/50 focus:border-primary h-12 rounded-xl"
+                    />
+                  </div>
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-mono text-muted-foreground mb-2">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  className="bg-card border-border focus:border-primary"
-                />
-              </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-muted-foreground mb-2">
+                    Subject
+                  </label>
+                  <Input
+                    id="subject"
+                    type="text"
+                    placeholder="Project Inquiry"
+                    className="bg-muted/30 border-border/50 focus:border-primary h-12 rounded-xl"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-mono text-muted-foreground mb-2">
-                  Subject
-                </label>
-                <Input
-                  id="subject"
-                  type="text"
-                  placeholder="Project Inquiry"
-                  className="bg-card border-border focus:border-primary"
-                />
-              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    rows={5}
+                    placeholder="Tell me about your project..."
+                    className="bg-muted/30 border-border/50 focus:border-primary resize-none rounded-xl"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-mono text-muted-foreground mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  rows={5}
-                  placeholder="Tell me about your project..."
-                  className="bg-card border-border focus:border-primary resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full group bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(190_95%_55%/0.5)] transition-all"
-              >
-                Send Message
-                <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full group h-14 text-base font-semibold bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 hover:shadow-[0_0_40px_hsl(220_100%_57%_/_0.4)] transition-all duration-300 rounded-xl"
+                >
+                  Send Message
+                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </form>
             </div>
           </motion.div>
         </div>
