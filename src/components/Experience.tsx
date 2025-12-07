@@ -1,34 +1,7 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Briefcase, Calendar, Award, GraduationCap, Trophy, Users } from "lucide-react";
 
 const Experience = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-
-  useEffect(() => {
-    if (pathRef.current) {
-      const path = pathRef.current;
-      const pathLength = path.getTotalLength();
-      
-      gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
-      
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
-        },
-      });
-    }
-  }, []);
-
   const experiences = [
     {
       title: "Judge SME Lead",
@@ -40,7 +13,8 @@ const Experience = () => {
         "Managed judging operations for 150+ startup teams",
         "Coordinated evaluation processes for national-level competition"
       ],
-      color: "from-cyan-500 to-blue-500"
+      icon: Users,
+      gradient: "from-primary to-secondary",
     },
     {
       title: "AI Research Intern",
@@ -52,7 +26,8 @@ const Experience = () => {
         "Optimized ML pipelines",
         "Published research findings"
       ],
-      color: "from-purple-500 to-pink-500"
+      icon: GraduationCap,
+      gradient: "from-secondary to-primary",
     },
     {
       title: "Freelance AI Engineer",
@@ -64,104 +39,154 @@ const Experience = () => {
         "Built scalable systems for 10+ clients",
         "Specialized in GenAI and LLM applications"
       ],
-      color: "from-green-500 to-emerald-500"
+      icon: Briefcase,
+      gradient: "from-primary/80 to-secondary/80",
+    },
+  ];
+
+  const achievements = [
+    { 
+      title: "CALICO Programming Competition", 
+      description: "Top performer in competitive programming",
+      icon: Trophy 
+    },
+    { 
+      title: "Shell.ai Hackathon 2025", 
+      description: "Advanced sustainable aviation fuel optimization",
+      icon: Award 
+    },
+    { 
+      title: "NASA Space Apps Challenge", 
+      description: "Participant in global innovation challenge",
+      icon: Award 
+    },
+    { 
+      title: "Intel AI Hackathon", 
+      description: "Built ML solutions for real-world problems",
+      icon: Award 
     },
   ];
 
   return (
-    <section 
-      ref={sectionRef}
-      id="experience" 
-      className="py-32 px-4 sm:px-6 lg:px-8 relative"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-32 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(220_100%_57%_/_0.05)_0%,_transparent_70%)]" />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl sm:text-6xl font-bold mb-4">
-            <span className="text-gradient">Experience</span>
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+            Career Journey
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-gradient">Experience & Impact</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Building products, leading teams, and solving complex problems
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Building products, leading teams, and winning competitions
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Animated timeline path */}
-          <svg 
-            className="absolute left-8 top-0 h-full w-1 hidden lg:block"
-            style={{ zIndex: 0 }}
-          >
-            <path
-              ref={pathRef}
-              d={`M 0 0 L 0 ${experiences.length * 400}`}
-              stroke="url(#gradient)"
-              strokeWidth="2"
-              fill="none"
-            />
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#00f5ff" />
-                <stop offset="50%" stopColor="#8338ec" />
-                <stop offset="100%" stopColor="#ff006e" />
-              </linearGradient>
-            </defs>
-          </svg>
+        {/* Experience timeline */}
+        <div className="mb-24">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/50 hidden lg:block" />
 
-          {/* Experience cards */}
-          <div className="space-y-16 relative z-10">
-            {experiences.map((exp, index) => (
+            {/* Experience cards */}
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <motion.div
+                  key={exp.company}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="relative pl-0 lg:pl-20"
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-[26px] top-8 w-4 h-4 rounded-full bg-gradient-to-br from-primary to-secondary shadow-[0_0_20px_hsl(220_100%_57%_/_0.5)] hidden lg:block" />
+
+                  {/* Card */}
+                  <div className="glass-card rounded-2xl p-8 hover:border-primary/30 transition-all duration-500 group card-hover">
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${exp.gradient} group-hover:scale-110 transition-transform duration-300`}>
+                          <exp.icon className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                            {exp.title}
+                          </h3>
+                          <div className="flex items-center gap-2 text-muted-foreground mt-1">
+                            <span className="font-medium">{exp.company}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 text-muted-foreground text-sm">
+                        <Calendar className="h-3.5 w-3.5" />
+                        <span className="font-mono">{exp.period}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-muted-foreground mb-5 leading-relaxed">{exp.description}</p>
+
+                    <div className="space-y-2">
+                      {exp.achievements.map((achievement, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary to-secondary mt-2 flex-shrink-0" />
+                          <span className="text-sm text-muted-foreground">{achievement}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3 className="text-2xl font-bold text-center mb-10">
+            <span className="text-gradient">Competitions & Recognition</span>
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {achievements.map((achievement, index) => (
               <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={achievement.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative pl-20 lg:pl-24"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass-card rounded-xl p-5 flex items-start gap-4 hover:border-secondary/30 transition-all duration-300 group"
               >
-                {/* Timeline dot */}
-                <div className="absolute left-6 top-6 w-5 h-5 rounded-full bg-primary shadow-[0_0_20px_hsl(var(--primary))] hidden lg:block" />
-
-                {/* Card */}
-                <div className="glass-strong rounded-2xl p-8 hover:border-primary/50 transition-all group">
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                        {exp.title}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Briefcase className="h-4 w-4" />
-                        <span className="font-mono text-sm">{exp.company}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
-                      <span className="font-mono text-sm">{exp.period}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-muted-foreground mb-4">{exp.description}</p>
-
-                  <div className="space-y-2">
-                    {exp.achievements.map((achievement, i) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${exp.color} mt-2 flex-shrink-0`} />
-                        <span className="text-sm text-muted-foreground font-mono">{achievement}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Decorative gradient */}
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity rounded-full`} />
+                <div className="p-2.5 rounded-lg bg-secondary/10 text-secondary group-hover:scale-110 transition-transform duration-300">
+                  <achievement.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold group-hover:text-secondary transition-colors">
+                    {achievement.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {achievement.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

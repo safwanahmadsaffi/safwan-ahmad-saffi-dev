@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Code2, Rocket, Sparkles, Heart } from "lucide-react";
+import { Code2, Rocket, Sparkles, Heart, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
 
 const About = () => {
@@ -7,127 +8,170 @@ const About = () => {
     {
       icon: Code2,
       title: "Problem Solver",
-      description: "I love turning complex challenges into elegant solutions through code and AI.",
-      color: "from-cyan-500 to-blue-500"
+      description: "Turning complex challenges into elegant AI solutions",
+      gradient: "from-primary to-secondary",
     },
     {
       icon: Rocket,
       title: "Fast Learner",
-      description: "Constantly exploring new technologies, from LLMs to 3D web experiences.",
-      color: "from-purple-500 to-pink-500"
+      description: "From LLMs to 3D web, constantly exploring new tech",
+      gradient: "from-secondary to-primary",
     },
     {
       icon: Sparkles,
-      title: "Creative Thinker",
-      description: "Blending engineering with design to build products that feel magical.",
-      color: "from-yellow-500 to-orange-500"
+      title: "Creative Builder",
+      description: "Blending engineering with design for magical products",
+      gradient: "from-primary/80 to-secondary/80",
     },
     {
       icon: Heart,
-      title: "Team Player",
-      description: "Leading teams at Jazz Xlr8 and collaborating with developers worldwide.",
-      color: "from-green-500 to-emerald-500"
+      title: "Team Leader",
+      description: "Leading teams at Jazz Xlr8, mentoring worldwide",
+      gradient: "from-secondary/80 to-primary/80",
     },
   ];
 
   return (
     <section id="about" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Animated liquid background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/30 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1s' }} />
-      </div>
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(220_100%_57%_/_0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(186_100%_50%_/_0.05)_0%,_transparent_50%)]" />
 
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl sm:text-6xl font-bold mb-4">
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+            Who I Am
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-gradient">About Me</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Building the future, one line of code at a time
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Building the future of AI, one intelligent system at a time
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          {/* Avatar placeholder with 3D effect */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          {/* Profile image with premium effects */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative group"
+            className="relative group order-2 lg:order-1"
           >
-            <div className="aspect-square rounded-3xl glass-strong overflow-hidden relative">
-              {/* Profile image */}
-              <img 
-                src={profileImage} 
-                alt="Safwan Ahmad" 
-                className="w-full h-full object-cover"
-              />
+            <div className="aspect-square max-w-md mx-auto rounded-3xl overflow-hidden relative">
+              {/* Gradient border effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary via-secondary to-primary opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-500" />
               
-              {/* Animated border */}
-              <div className="absolute inset-0 rounded-3xl border-2 border-primary/0 group-hover:border-primary/50 transition-all duration-300" />
-              
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              {/* Image container */}
+              <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-background">
+                <img 
+                  src={profileImage} 
+                  alt="Safwan Ahmad" 
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+              </div>
             </div>
+
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -bottom-6 -right-6 glass-card rounded-2xl p-4 hidden sm:block"
+            >
+              <div className="text-3xl font-bold text-gradient">3+</div>
+              <div className="text-sm text-muted-foreground">Years Building AI</div>
+            </motion.div>
           </motion.div>
 
-          {/* Story */}
+          {/* Story content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 order-1 lg:order-2"
           >
-            <h3 className="text-3xl font-bold">Hey there! 👋</h3>
+            <h3 className="text-3xl font-bold">
+              Hey, I'm <span className="text-gradient">Safwan</span> 👋
+            </h3>
+            
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Safwan Ahmad, a <span className="text-primary font-semibold">GenAI Engineer</span> and 
-              full-stack developer passionate about building intelligent systems that actually solve real problems.
+              I'm a <span className="text-primary font-semibold">GenAI Engineer</span> and 
+              full-stack developer passionate about building intelligent systems that solve real problems.
             </p>
+            
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Currently leading teams at <span className="text-primary font-semibold">Jazz Xlr8</span> while 
+              Currently leading teams at <span className="text-secondary font-semibold">Jazz Xlr8</span> while 
               researching AI at Virtual University. I've won hackathons, built ML pipelines, and shipped 
               products used by thousands.
             </p>
+            
             <p className="text-lg text-muted-foreground leading-relaxed">
               When I'm not coding, you'll find me competing in international hackathons (Shell, NASA, Intel), 
               exploring new frameworks, or mentoring aspiring developers.
             </p>
+
+            {/* Tags */}
             <div className="flex flex-wrap gap-3 pt-4">
-              <span className="px-4 py-2 rounded-full glass text-sm font-mono">🎯 Product-minded</span>
-              <span className="px-4 py-2 rounded-full glass text-sm font-mono">⚡ Fast executor</span>
-              <span className="px-4 py-2 rounded-full glass text-sm font-mono">🚀 Always learning</span>
+              <span className="px-4 py-2 rounded-full glass-card text-sm font-medium">🎯 Product-minded</span>
+              <span className="px-4 py-2 rounded-full glass-card text-sm font-medium">⚡ Fast executor</span>
+              <span className="px-4 py-2 rounded-full glass-card text-sm font-medium">🚀 Always learning</span>
+            </div>
+
+            {/* CTA */}
+            <div className="pt-4">
+              <Button
+                size="lg"
+                className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 rounded-full"
+                asChild
+              >
+                <a href="/Safwan_Ahmad_CV.pdf" download>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Resume
+                </a>
+              </Button>
             </div>
           </motion.div>
         </div>
 
         {/* Personality traits grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {traits.map((trait, index) => (
             <motion.div
               key={trait.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-strong rounded-2xl p-6 hover:border-primary/50 transition-all group"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-500 group card-hover"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${trait.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <trait.icon className="h-6 w-6 text-white" />
+              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${trait.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <trait.icon className="h-7 w-7 text-white" />
               </div>
-              <h4 className="text-lg font-bold mb-2">{trait.title}</h4>
-              <p className="text-sm text-muted-foreground font-mono">{trait.description}</p>
+              <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{trait.title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{trait.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
